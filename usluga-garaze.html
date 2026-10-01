@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Garaže po Meri | Haus Majstor Nemanja</title>
+<meta name="description" content="Uslužna izrada montažnih garaža po meri. Čvrsta metalna konstrukcija, kvalitetan lim, otpornost na vremenske uslove. Poziv: 061 666 9378"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="style.css"/>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <button class="mobile-close" onclick="closeMobile()">×</button>
+  <a href="index.html#about" onclick="closeMobile()">O Nama</a>
+  <a href="index.html#gallery" onclick="closeMobile()">Galerija</a>
+  <div class="m-dropdown" id="mDropdown">
+    <button class="m-dropdown-toggle" onclick="toggleMDrop(this)">Usluge <span class="m-drop-caret">+</span></button>
+    <div class="m-dropdown-list">
+      <a href="usluga-natresnice.html" onclick="closeMobile()">Natrešnice</a>
+      <a href="usluga-letnjikovci.html" onclick="closeMobile()">Letnjikovci</a>
+      <a href="usluga-garaze.html" onclick="closeMobile()">Garaže</a>
+      <a href="usluga-bastice.html" onclick="closeMobile()">Baštice</a>
+    </div>
+  </div>
+  <a href="index.html#contact" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<div id="lightbox" onclick="closeLightbox(event)">
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt=""/>
+    <button class="lb-close" onclick="closeLightboxBtn()">×</button>
+    <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
+    <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
+    <div class="lb-info" id="lbInfo"></div>
+  </div>
+</div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-mark">
+      <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="43" x2="45" y2="43"/>
+        <path d="M4 23 L24 6 L44 23"/>
+        <line x1="7" y1="23" x2="41" y2="23"/>
+        <circle cx="24" cy="17" r="1.4"/>
+        <path d="M35 13 L35 8 L38.5 8 L38.5 16"/>
+        <line x1="8" y1="23" x2="8" y2="43"/>
+        <line x1="40" y1="23" x2="40" y2="43"/>
+        <path d="M20 43 L20 31 Q20 28.5 22 28.5 L26 28.5 Q28 28.5 28 31 L28 43"/>
+        <rect x="11.5" y="28" width="6" height="6.5"/>
+        <line x1="14.5" y1="28" x2="14.5" y2="34.5"/>
+        <line x1="11.5" y1="31.25" x2="17.5" y2="31.25"/>
+        <rect x="30.5" y="28" width="6" height="6.5"/>
+        <line x1="33.5" y1="28" x2="33.5" y2="34.5"/>
+        <line x1="30.5" y1="31.25" x2="36.5" y2="31.25"/>
+      </svg>
+    </span>
+    HAUS <em>MAJSTOR</em>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O Nama</a></li>
+    <li><a href="index.html#gallery">Radovi</a></li>
+    <li class="has-dropdown">
+      <a href="index.html#services-preview">Usluge <span class="drop-caret">▾</span></a>
+      <div class="dropdown-wrap">
+        <ul class="dropdown">
+          <li><a href="usluga-natresnice.html">Natrešnice</a></li>
+          <li><a href="usluga-letnjikovci.html">Letnjikovci</a></li>
+          <li><a href="usluga-garaze.html">Garaže</a></li>
+          <li><a href="usluga-bastice.html">Baštice</a></li>
+        </ul>
+      </div>
+    </li>
+    <li><a href="index.html#video-showcase">Video</a></li>
+    <li><a href="index.html#contact">Kontakt</a></li>
+  </ul>
+  <a href="tel:+381616669378" class="nav-book">061 666 9378</a>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Meni">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="srv-page-hero">
+  <video class="hero-bg" autoplay muted loop playsinline>
+    <source src="video3.mp4" type="video/mp4"/>
+  </video>
+  <div class="srv-hero-tint"></div>
+  <div class="srv-hero-content">
+    <div class="srv-hero-crumb">
+      <a href="index.html">Početna</a>
+      <span class="sep"></span>
+      <span>Garaže</span>
+    </div>
+    <h1 class="srv-hero-h1">Montažne <em>garaže</em></h1>
+    <p class="srv-hero-sub">Čvrste montažne garaže i pomoćni objekti. Metalna nosiva konstrukcija, kvalitetan pokrivač i dugotrajna antikorozivna zaštita.</p>
+    <div class="srv-hero-rule"></div>
+  </div>
+</section>
+
+<section class="srv-intro">
+  <div class="srv-intro-wrap">
+    <div class="srv-intro-text">
+      <p class="eyebrow fade-up">O Usluzi</p>
+      <h2 class="section-h fade-up">Sigurno mesto <em>za vaše vozilo</em></h2>
+      <p class="fade-up">Garaža ne mora da bude komplikovan građevinski projekat. Nudim montažne garaže sa čvrstom metalnom konstrukcijom i lim pokrivačem — brzo se prave, precizno se postavljaju i traju godinama.</p>
+      <p class="fade-up">Dostupne su različite veličine: za jedan auto, dva auta, kombi ili kao pomoćni objekat za alat i mašine. Sve mere su moguće po vašem zahtevu.</p>
+      <ul class="srv-features fade-up">
+        <li>Za jedan, dva ili više automobila</li>
+        <li>Klasična i dvokrilna vrata</li>
+        <li>Trapezni lim ili sendvič panel</li>
+        <li>Nagibni krov za oticanje</li>
+        <li>Antikorozivna osnova i završni sloj</li>
+        <li>Opciono: prozor, ventilacija, brava</li>
+      </ul>
+    </div>
+    <div class="srv-intro-visual fade-up">
+      <video class="srv-intro-media" autoplay muted loop playsinline poster="bastice.jpg">
+        <source src="video3.mp4" type="video/mp4"/>
+      </video>
+      <div class="srv-intro-accent"></div>
+    </div>
+  </div>
+</section>
+
+<section class="srv-video-sec">
+  <div class="srv-video-wrap">
+    <div class="srv-video-head">
+      <p class="eyebrow fade-up" style="justify-content:center">Video</p>
+      <h2 class="section-h fade-up">Rad <em>uživo</em></h2>
+      <p class="fade-up">Snimci sa terena — od priprem materijala do finalne montaže garaže.</p>
+    </div>
+    <div class="srv-video-grid">
+      <div class="fade-up">
+        <div class="srv-video-frame">
+          <video src="video2.mp4" muted loop autoplay playsinline data-autoplay></video>
+        </div>
+        <div class="srv-video-caption">Priprema konstrukcije</div>
+      </div>
+      <div class="fade-up">
+        <div class="srv-video-frame">
+          <video src="video3.mp4" muted loop autoplay playsinline data-autoplay></video>
+        </div>
+        <div class="srv-video-caption">Montaža na terenu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="srv-cta">
+  <p class="srv-cta-eyebrow">Treba vam garaža?</p>
+  <h2>Zaštitite <em>svoje vozilo</em> pravim rešenjem</h2>
+  <p>Pozovite za dogovor — dolazim, merim prostor i pravim ponudu sa tačnom cenom. Bez skrivenih troškova.</p>
+  <div class="srv-cta-btns">
+    <a href="tel:+381616669378" class="btn-fill gold">Pozovi 061 666 9378</a>
+    <a href="viber://chat?number=%2B381616669378" class="btn-ghost">Viber Poruka</a>
+  </div>
+</section>
+
+<div class="back-link-bar">
+  <a href="index.html#services-preview" class="back-link"><span class="arrow">←</span> Sve usluge</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="f-col">
+      <div class="f-brand-logo">
+        <span class="f-brand-mark">
+          <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="43" x2="45" y2="43"/>
+            <path d="M4 23 L24 6 L44 23"/>
+            <line x1="7" y1="23" x2="41" y2="23"/>
+            <circle cx="24" cy="17" r="1.4"/>
+            <path d="M35 13 L35 8 L38.5 8 L38.5 16"/>
+            <line x1="8" y1="23" x2="8" y2="43"/>
+            <line x1="40" y1="23" x2="40" y2="43"/>
+            <path d="M20 43 L20 31 Q20 28.5 22 28.5 L26 28.5 Q28 28.5 28 31 L28 43"/>
+            <rect x="11.5" y="28" width="6" height="6.5"/>
+            <line x1="14.5" y1="28" x2="14.5" y2="34.5"/>
+            <line x1="11.5" y1="31.25" x2="17.5" y2="31.25"/>
+            <rect x="30.5" y="28" width="6" height="6.5"/>
+            <line x1="33.5" y1="28" x2="33.5" y2="34.5"/>
+            <line x1="30.5" y1="31.25" x2="36.5" y2="31.25"/>
+          </svg>
+        </span>
+        HAUS <em>MAJSTOR</em>
+      </div>
+      <p class="f-desc">Nemanja — izrada natrešnica, letnjikovaca, garaža i uzdignutih baštica po meri.</p>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Navigacija</div>
+      <ul class="f-links">
+        <li><a href="index.html#about">O Nama</a></li>
+        <li><a href="index.html#services-preview">Usluge</a></li>
+        <li><a href="index.html#video-showcase">Video</a></li>
+        <li><a href="index.html#contact">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Usluge</div>
+      <ul class="f-links">
+        <li><a href="usluga-natresnice.html">Natrešnice</a></li>
+        <li><a href="usluga-letnjikovci.html">Letnjikovci</a></li>
+        <li><a href="usluga-garaze.html">Garaže</a></li>
+        <li><a href="usluga-bastice.html">Baštice</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Kontakt</div>
+      <ul class="f-links">
+        <li><a href="tel:+381616669378">061 666 9378</a></li>
+        <li><a href="viber://chat?number=%2B381616669378">Viber / WhatsApp</a></li>
+        <li>Pon–Sub · 08–18h</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Haus Majstor Nemanja. Sva prava zadržana.</div>
+    <div style="opacity:0.45;letter-spacing:2px;font-size:10px;">SRBIJA</div>
+  </div>
+</footer>
+
+</body>
+</html>

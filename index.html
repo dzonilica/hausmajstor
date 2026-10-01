@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Haus Majstor Nemanja | Natrešnice, Letnjikovci, Garaže i Baštice</title>
+<meta name="description" content="Haus Majstor Nemanja — usluga izrade natrešnica, letnjikovaca, garaža i baštica po meri. Kvalitet, čvrstoća i dugotrajnost. Brza i precizna montaža."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="style.css"/>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-panel" id="loaderPanelTop"></div>
+  <div class="loader-logo" id="loaderLogo">
+    <div class="loader-icon-wrap" id="loaderIcon">
+      <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="43" x2="45" y2="43"/>
+        <path d="M4 23 L24 6 L44 23"/>
+        <line x1="7" y1="23" x2="41" y2="23"/>
+        <line x1="12" y1="19" x2="36" y2="19" opacity="0.55"/>
+        <line x1="16" y1="15" x2="32" y2="15" opacity="0.45"/>
+        <circle cx="24" cy="17" r="1.6"/>
+        <path d="M35 13 L35 8 L38.5 8 L38.5 16"/>
+        <line x1="8" y1="23" x2="8" y2="43"/>
+        <line x1="40" y1="23" x2="40" y2="43"/>
+        <path d="M20 43 L20 31 Q20 28.5 22 28.5 L26 28.5 Q28 28.5 28 31 L28 43"/>
+        <circle cx="26" cy="36.5" r="0.7" fill="currentColor" stroke="none"/>
+        <rect x="11.5" y="28" width="6" height="6.5"/>
+        <line x1="14.5" y1="28" x2="14.5" y2="34.5"/>
+        <line x1="11.5" y1="31.25" x2="17.5" y2="31.25"/>
+        <rect x="30.5" y="28" width="6" height="6.5"/>
+        <line x1="33.5" y1="28" x2="33.5" y2="34.5"/>
+        <line x1="30.5" y1="31.25" x2="36.5" y2="31.25"/>
+      </svg>
+    </div>
+    <div class="loader-brand">HAUS <em>MAJSTOR</em></div>
+    <div class="loader-line" id="loaderLine"></div>
+    <div class="loader-sub" id="loaderSub">Nemanja · Zanat i Preciznost</div>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay">
+  <button class="mobile-close" onclick="closeMobile()">×</button>
+  <a href="index.html#about" onclick="closeMobile()">O Nama</a>
+  <a href="index.html#gallery" onclick="closeMobile()">Galerija</a>
+  <div class="m-dropdown" id="mDropdown">
+    <button class="m-dropdown-toggle" onclick="toggleMDrop(this)">
+      Usluge
+      <span class="m-drop-caret">+</span>
+    </button>
+    <div class="m-dropdown-list">
+      <a href="usluga-natresnice.html" onclick="closeMobile()">Natrešnice</a>
+      <a href="usluga-letnjikovci.html" onclick="closeMobile()">Letnjikovci</a>
+      <a href="usluga-garaze.html" onclick="closeMobile()">Garaže</a>
+      <a href="usluga-bastice.html" onclick="closeMobile()">Baštice</a>
+    </div>
+  </div>
+  <a href="index.html#projects" onclick="closeMobile()">Radovi</a>
+  <a href="index.html#contact" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt=""/>
+    <button class="lb-close" onclick="closeLightboxBtn()">×</button>
+    <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
+    <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
+    <div class="lb-info" id="lbInfo"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-mark">
+      <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="43" x2="45" y2="43"/>
+        <path d="M4 23 L24 6 L44 23"/>
+        <line x1="7" y1="23" x2="41" y2="23"/>
+        <circle cx="24" cy="17" r="1.4"/>
+        <path d="M35 13 L35 8 L38.5 8 L38.5 16"/>
+        <line x1="8" y1="23" x2="8" y2="43"/>
+        <line x1="40" y1="23" x2="40" y2="43"/>
+        <path d="M20 43 L20 31 Q20 28.5 22 28.5 L26 28.5 Q28 28.5 28 31 L28 43"/>
+        <rect x="11.5" y="28" width="6" height="6.5"/>
+        <line x1="14.5" y1="28" x2="14.5" y2="34.5"/>
+        <line x1="11.5" y1="31.25" x2="17.5" y2="31.25"/>
+        <rect x="30.5" y="28" width="6" height="6.5"/>
+        <line x1="33.5" y1="28" x2="33.5" y2="34.5"/>
+        <line x1="30.5" y1="31.25" x2="36.5" y2="31.25"/>
+      </svg>
+    </span>
+    HAUS <em>MAJSTOR</em>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O Nama</a></li>
+    <li><a href="index.html#gallery">Radovi</a></li>
+    <li class="has-dropdown">
+      <a href="index.html#services-preview">Usluge <span class="drop-caret">▾</span></a>
+      <div class="dropdown-wrap">
+        <ul class="dropdown">
+          <li><a href="usluga-natresnice.html">Natrešnice</a></li>
+          <li><a href="usluga-letnjikovci.html">Letnjikovci</a></li>
+          <li><a href="usluga-garaze.html">Garaže</a></li>
+          <li><a href="usluga-bastice.html">Baštice</a></li>
+        </ul>
+      </div>
+    </li>
+    <li><a href="index.html#video-showcase">Video</a></li>
+    <li><a href="index.html#contact">Kontakt</a></li>
+  </ul>
+  <a href="tel:+381616669378" class="nav-book">061 666 9378</a>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Meni">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg">
+    <svg class="hero-scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="hsSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#150f09"/>
+          <stop offset="45%" stop-color="#2f2013"/>
+          <stop offset="80%" stop-color="#5c3a1e"/>
+          <stop offset="100%" stop-color="#a06a38"/>
+        </linearGradient>
+        <radialGradient id="hsGlow" cx="50%" cy="92%" r="70%">
+          <stop offset="0%" stop-color="rgba(255,200,120,0.55)"/>
+          <stop offset="40%" stop-color="rgba(200,131,42,0.22)"/>
+          <stop offset="100%" stop-color="rgba(200,131,42,0)"/>
+        </radialGradient>
+        <radialGradient id="hsWin" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="rgba(255,224,155,1)"/>
+          <stop offset="70%" stop-color="rgba(255,220,150,0.7)"/>
+          <stop offset="100%" stop-color="rgba(255,220,150,0)"/>
+        </radialGradient>
+        <radialGradient id="hsDoor" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="rgba(255,224,155,0.85)"/>
+          <stop offset="100%" stop-color="rgba(255,220,150,0)"/>
+        </radialGradient>
+        <pattern id="hsDots" width="44" height="44" patternUnits="userSpaceOnUse">
+          <circle cx="22" cy="22" r="0.7" fill="rgba(221,161,94,0.08)"/>
+        </pattern>
+      </defs>
+      <rect width="1600" height="900" fill="url(#hsSky)"/>
+      <ellipse cx="800" cy="800" rx="1050" ry="300" fill="url(#hsGlow)"/>
+      <rect width="1600" height="900" fill="url(#hsDots)"/>
+      <path d="M0 640 Q 260 570 520 620 T 1040 605 T 1440 615 L 1600 605 L 1600 900 L 0 900 Z" fill="#1a1108" opacity="0.85"/>
+      <path d="M0 700 L 40 650 L 90 685 L 140 640 L 200 685 L 250 645 L 310 690 L 370 645 L 430 690 L 490 645 L 560 685 L 620 640 L 680 690 L 740 655 L 800 690 L 860 640 L 920 690 L 980 650 L 1050 690 L 1110 640 L 1170 685 L 1240 650 L 1300 690 L 1360 645 L 1430 690 L 1500 650 L 1560 690 L 1600 670 L 1600 900 L 0 900 Z" fill="#0d0805"/>
+
+      <g transform="translate(260 655)">
+        <path d="M-8 0 L 70 -28 L 148 0" fill="#050301"/>
+        <rect y="0" width="140" height="115" fill="#0a0603"/>
+        <rect x="18" y="30" width="104" height="85" fill="#040201"/>
+        <line x1="18" y1="55" x2="122" y2="55" stroke="#1a1108" stroke-width="1"/>
+        <line x1="18" y1="82" x2="122" y2="82" stroke="#1a1108" stroke-width="1"/>
+        <line x1="70" y1="30" x2="70" y2="115" stroke="#1a1108" stroke-width="1"/>
+      </g>
+
+      <g transform="translate(660 460)">
+        <rect x="25" y="105" width="230" height="185" fill="#0a0603"/>
+        <path d="M0 108 L 140 8 L 280 108 Z" fill="#050301"/>
+        <rect x="205" y="40" width="22" height="60" fill="#050301"/>
+        <ellipse cx="70" cy="158" rx="95" ry="45" fill="url(#hsWin)"/>
+        <rect x="50" y="140" width="40" height="36" fill="#ffd68a"/>
+        <line x1="70" y1="140" x2="70" y2="176" stroke="#0a0603" stroke-width="1.6"/>
+        <line x1="50" y1="158" x2="90" y2="158" stroke="#0a0603" stroke-width="1.6"/>
+        <rect x="192" y="140" width="40" height="36" fill="#3a2716"/>
+        <line x1="212" y1="140" x2="212" y2="176" stroke="#0a0603" stroke-width="1.6"/>
+        <line x1="192" y1="158" x2="232" y2="158" stroke="#0a0603" stroke-width="1.6"/>
+        <ellipse cx="140" cy="260" rx="40" ry="20" fill="url(#hsDoor)"/>
+        <rect x="120" y="205" width="40" height="85" fill="#020100"/>
+        <circle cx="153" cy="248" r="1.5" fill="rgba(255,224,155,0.95)"/>
+      </g>
+
+      <g transform="translate(1180 615)">
+        <path d="M-5 55 L 60 -5 L 125 55 Z" fill="#050301"/>
+        <rect x="12" y="55" width="6" height="115" fill="#0a0603"/>
+        <rect x="102" y="55" width="6" height="115" fill="#0a0603"/>
+        <rect x="12" y="128" width="96" height="4" fill="#0a0603"/>
+        <rect x="0" y="168" width="120" height="6" fill="#0a0603"/>
+      </g>
+
+      <g fill="#020100">
+        <path d="M-40 900 L 30 570 L 100 900 Z"/>
+        <path d="M60 900 L 130 470 L 210 900 Z"/>
+        <rect x="126" y="770" width="8" height="130"/>
+      </g>
+      <g fill="#020100">
+        <path d="M1370 900 L 1450 480 L 1540 900 Z"/>
+        <rect x="1446" y="780" width="8" height="120"/>
+        <path d="M1500 900 L 1610 550 L 1720 900 Z"/>
+      </g>
+
+      <g transform="translate(920 810)" fill="#080503">
+        <rect width="200" height="55"/>
+        <line x1="0" y1="14" x2="200" y2="14" stroke="#241d15" stroke-width="1"/>
+        <line x1="0" y1="32" x2="200" y2="32" stroke="#241d15" stroke-width="1"/>
+        <line x1="0" y1="46" x2="200" y2="46" stroke="#241d15" stroke-width="1"/>
+        <line x1="66" y1="0" x2="66" y2="55" stroke="#241d15" stroke-width="1"/>
+        <line x1="134" y1="0" x2="134" y2="55" stroke="#241d15" stroke-width="1"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-tint"></div>
+  <div class="hero-pattern"></div>
+
+  <div class="hero-corner tl" id="hcTL">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M2 58 L2 2 L58 2" stroke="#dda15e" stroke-width="1" opacity="0.7"/>
+      <circle cx="2" cy="2" r="2" fill="#dda15e" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="hero-corner tr" id="hcTR">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M2 58 L2 2 L58 2" stroke="#dda15e" stroke-width="1" opacity="0.7"/>
+      <circle cx="2" cy="2" r="2" fill="#dda15e" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="hero-corner bl" id="hcBL">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M2 58 L2 2 L58 2" stroke="#dda15e" stroke-width="1" opacity="0.7"/>
+      <circle cx="2" cy="2" r="2" fill="#dda15e" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="hero-corner br" id="hcBR">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M2 58 L2 2 L58 2" stroke="#dda15e" stroke-width="1" opacity="0.7"/>
+      <circle cx="2" cy="2" r="2" fill="#dda15e" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-rule top" id="hrTop"></div>
+  <div class="hero-rule bot" id="hrBot"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-inner">Uslužna Izrada · Drvo & Metal po Meri</span></div>
+    <h1 class="hero-h1">
+      <span class="line"><span class="line-inner">Natrešnice,</span></span>
+      <span class="line"><span class="line-inner">Letnjikovci</span></span>
+      <span class="line"><span class="line-inner">&amp; <em>Garaže</em></span></span>
+    </h1>
+    <p class="hero-sub">Kvalitet, čvrstoća i dugotrajnost — izrada po meri, kvalitetni materijali, brza i precizna montaža. Vaša ideja, moja izvedba.</p>
+    <div class="hero-ctas">
+      <a href="tel:+381616669378" class="btn-fill">Pozovi Odmah</a>
+      <a href="#services-preview" class="btn-ghost">Pogledaj Usluge</a>
+    </div>
+  </div>
+
+  <div class="hero-badge" id="heroBadge">
+    <div class="hero-badge-inner">
+      <div class="hero-badge-n">100%</div>
+      <div class="hero-badge-l">Zadovoljni Klijenti</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" id="scrollHint">
+    <span class="scroll-label">Skroluj</span>
+    <div class="scroll-track"></div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section id="services-preview">
+  <div class="sp-wrap">
+    <div class="sp-head">
+      <p class="eyebrow fade-up">Naše Usluge</p>
+      <h2 class="section-h fade-up">Sve što vaše dvorište <em>traži</em></h2>
+      <p class="sp-sub fade-up">Kliknite na uslugu za detalje, galeriju i video primere realizovanih projekata.</p>
+    </div>
+
+    <div class="sp-grid">
+
+      <a href="usluga-natresnice.html" class="sp-card fade-up">
+        <div class="sp-card-inner">
+          <div class="sp-icon">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12 L16 4 L30 12"/>
+              <line x1="2" y1="12" x2="30" y2="12"/>
+              <line x1="6" y1="12" x2="6" y2="28"/>
+              <line x1="26" y1="12" x2="26" y2="28"/>
+              <line x1="16" y1="12" x2="16" y2="28"/>
+              <line x1="4" y1="28" x2="28" y2="28"/>
+            </svg>
+          </div>
+          <div class="sp-num">01</div>
+          <h3 class="sp-title">Natrešnice</h3>
+          <p class="sp-desc">Natrešnice za automobile, ulaz i terase — čvrsta konstrukcija, otporna na sneg, vetar i sunce. Metal, drvo i lim po vašoj meri.</p>
+          <span class="sp-link">Pogledaj radove <span class="sp-arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="usluga-letnjikovci.html" class="sp-card fade-up">
+        <div class="sp-card-inner">
+          <div class="sp-icon">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="16 3 3 12 29 12"/>
+              <line x1="6" y1="12" x2="6" y2="28"/>
+              <line x1="26" y1="12" x2="26" y2="28"/>
+              <line x1="12" y1="16" x2="12" y2="28"/>
+              <line x1="20" y1="16" x2="20" y2="28"/>
+              <line x1="4" y1="28" x2="28" y2="28"/>
+              <line x1="12" y1="20" x2="20" y2="20"/>
+            </svg>
+          </div>
+          <div class="sp-num">02</div>
+          <h3 class="sp-title">Letnjikovci</h3>
+          <p class="sp-desc">Letnjikovci i altani za dvorište — ručna izrada, čvrsti nosivi elementi i topao drveni završetak. Idealno za dane i večeri na otvorenom.</p>
+          <span class="sp-link">Pogledaj radove <span class="sp-arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="usluga-garaze.html" class="sp-card fade-up">
+        <div class="sp-card-inner">
+          <div class="sp-icon">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 14 L16 5 L29 14"/>
+              <rect x="5" y="14" width="22" height="14"/>
+              <line x1="5" y1="20" x2="27" y2="20"/>
+              <line x1="9" y1="20" x2="9" y2="28"/>
+              <line x1="16" y1="20" x2="16" y2="28"/>
+              <line x1="23" y1="20" x2="23" y2="28"/>
+            </svg>
+          </div>
+          <div class="sp-num">03</div>
+          <h3 class="sp-title">Garaže</h3>
+          <p class="sp-desc">Montažne garaže i pomoćni objekti — čvrsta metalna konstrukcija, kvalitetan lim ili trapezni krov. Otporne na kišu i sneg.</p>
+          <span class="sp-link">Pogledaj radove <span class="sp-arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="usluga-bastice.html" class="sp-card fade-up">
+        <div class="sp-card-inner">
+          <div class="sp-icon">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="14" width="24" height="12"/>
+              <line x1="4" y1="18" x2="28" y2="18"/>
+              <line x1="4" y1="22" x2="28" y2="22"/>
+              <line x1="10" y1="14" x2="10" y2="26"/>
+              <line x1="22" y1="14" x2="22" y2="26"/>
+              <path d="M9 14 Q10 8 12 6"/>
+              <path d="M15 14 Q16 6 18 4"/>
+              <path d="M21 14 Q22 8 24 6"/>
+            </svg>
+          </div>
+          <div class="sp-num">04</div>
+          <h3 class="sp-title">Baštice</h3>
+          <p class="sp-desc">Uzdignute drvene baštice za povrtnjak i cveće — impregnirane i otporne na vlagu. Estetske, čvrste i dugotrajne.</p>
+          <span class="sp-link">Pogledaj radove <span class="sp-arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- VALUE STRIP -->
+<section id="values">
+  <div class="values-wrap">
+    <div class="value-cell">
+      <div class="value-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L2 7 L2 17 L12 22 L22 17 L22 7 Z"/>
+          <line x1="2" y1="7" x2="12" y2="12"/>
+          <line x1="22" y1="7" x2="12" y2="12"/>
+          <line x1="12" y1="12" x2="12" y2="22"/>
+        </svg>
+      </div>
+      <h4>Izrada po meri</h4>
+      <p>Svaki projekat prilagođen prostoru</p>
+    </div>
+    <div class="value-cell">
+      <div class="value-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <h4>Čvrstoća</h4>
+      <p>Stabilna nosiva konstrukcija</p>
+    </div>
+    <div class="value-cell">
+      <div class="value-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17.5 19H9a5.5 5.5 0 1 1 5.34-6.87"/>
+          <polyline points="17 12 20 15 23 12"/>
+        </svg>
+      </div>
+      <h4>Otpornost</h4>
+      <p>Na vremenske uslove i vlagu</p>
+    </div>
+    <div class="value-cell">
+      <div class="value-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <h4>Brza montaža</h4>
+      <p>Precizno i u dogovorenom roku</p>
+    </div>
+    <div class="value-cell">
+      <div class="value-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/>
+          <line x1="7" y1="22" x2="7" y2="11"/>
+        </svg>
+      </div>
+      <h4>Povoljne cene</h4>
+      <p>Bez posrednika, direktno od majstora</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Natrešnice <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Letnjikovci <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Garaže <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Baštice <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Kvalitet <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Čvrstoća <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Dugotrajnost <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Haus Majstor Nemanja <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Natrešnice <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Letnjikovci <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Garaže <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Baštice <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Kvalitet <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Čvrstoća <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Dugotrajnost <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Haus Majstor Nemanja <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-text-col">
+      <p class="eyebrow fade-up">Ko Sam Ja</p>
+      <h2 class="section-h fade-up">Majstor koji <em>voli</em><br/>svoj zanat</h2>
+      <p class="about-desc fade-up">Ja sam Nemanja — majstor specijalizovan za izradu natrešnica, letnjikovaca, garaža i uzdignutih baštica. Nudim kompletnu uslugu — od merenja i predloga do finalne montaže kod vašeg dvorišta.</p>
+      <p class="about-desc fade-up" style="margin-top:14px;">Radim sa proverenim materijalima, dajem realne rokove i realne cene. Za mene svaki posao mora da traje — zato svaki šraf i svaki spoj rade tako da izdrže godine.</p>
+      <div class="about-stats fade-up">
+        <div class="stat">
+          <div class="stat-n">200<span>+</span></div>
+          <div class="stat-l">Završenih Radova</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">10<span>+</span></div>
+          <div class="stat-l">Godina Iskustva</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">100<span>%</span></div>
+          <div class="stat-l">Zadovoljnih Klijenata</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img-col">
+      <div class="about-img-frame">
+        <img src="bastice.jpg" alt="Haus Majstor Nemanja — Baštice" class="about-img-main"/>
+        <div class="about-img-accent"></div>
+        <div class="about-badge">
+          <div class="about-badge-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="about-badge-n">Garantovan</div>
+            <div class="about-badge-l">Kvalitet & Rok</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SHOWCASE -->
+<section id="video-showcase">
+  <div class="vs-wrap">
+    <div class="vs-head">
+      <p class="eyebrow fade-up">U Radu</p>
+      <h2 class="section-h fade-up">Pogledajte <em>proces</em> uživo</h2>
+      <p class="fade-up">Video snimci sa terena — merenje, sečenje, varenje i finalna montaža. Ovo je zanat u pokretu.</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-item fade-up">
+        <video src="video1.mp4" muted loop autoplay playsinline data-autoplay></video>
+        <div class="vs-item-play">▶</div>
+        <div class="vs-item-label">Radionica</div>
+      </div>
+      <div class="vs-item fade-up">
+        <video src="video2.mp4" muted loop autoplay playsinline data-autoplay></video>
+        <div class="vs-item-play">▶</div>
+        <div class="vs-item-label">Konstrukcija</div>
+      </div>
+      <div class="vs-item fade-up">
+        <video src="video3.mp4" muted loop autoplay playsinline data-autoplay></video>
+        <div class="vs-item-play">▶</div>
+        <div class="vs-item-label">Montaža</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section id="pullquote">
+  <div class="pq-deco">"</div>
+  <p class="pq-sep-top fade-up"></p>
+  <blockquote class="pq-text fade-up">Nema prečice do dobrog posla — samo <em>meru, alat i mirnu ruku</em>. Ono što jednom napravim, tu ostaje godinama.</blockquote>
+  <p class="pq-author fade-up">— Nemanja, Haus Majstor</p>
+  <div class="pq-sep fade-up"></div>
+</section>
+
+<!-- GALLERY GRID -->
+<section id="gallery">
+  <div class="gallery-wrap">
+    <div class="gallery-top">
+      <div>
+        <p class="eyebrow fade-up">Radovi</p>
+        <h2 class="section-h fade-up">Svaki komad<br/><em>izrađen ručno</em></h2>
+      </div>
+      <a href="#video-showcase" class="btn-ghost fade-up" style="align-self:flex-end">Video Galerija →</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item gi-1" data-lb-src="bastice.jpg" data-lb-caption="Baštice — uzdignute drvene lehe za povrtnjak">
+        <img src="bastice.jpg" alt="Baštice — uzdignute drvene lehe"/>
+        <div class="g-label">Baštice · Drvo</div>
+      </div>
+      <div class="g-item gi-2">
+        <video src="video1.mp4" muted loop autoplay playsinline></video>
+        <div class="g-label">Radionica · Rad u toku</div>
+      </div>
+      <div class="g-item gi-3">
+        <video src="video2.mp4" muted loop autoplay playsinline></video>
+        <div class="g-label">Natrešnica · Konstrukcija</div>
+      </div>
+      <div class="g-item gi-4">
+        <video src="video3.mp4" muted loop autoplay playsinline></video>
+        <div class="g-label">Montaža · Teren</div>
+      </div>
+      <div class="g-item gi-5" data-lb-src="bastice.jpg" data-lb-caption="Baštice — završen rad">
+        <img src="bastice.jpg" alt="Baštice — završen rad"/>
+        <div class="g-label">Baštice · Detalj</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <p class="eyebrow fade-up">Kontakt</p>
+      <h2 class="section-h fade-up">Pozovite <em>danas</em>,<br/>pričajmo o projektu</h2>
+      <p class="contact-desc fade-up">Bez obzira da li imate gotovu ideju ili tek razmišljate — javite se. Dogovaramo termin za merenje, ja pravim predlog i cenu bez skrivenih troškova. Konsultacija je besplatna.</p>
+
+      <div class="c-details fade-up">
+        <div class="c-item">
+          <div class="c-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.17 6.17l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="c-item-body">
+            <strong>Telefon</strong>
+            <span><a href="tel:+381616669378">061 666 9378</a></span>
+          </div>
+        </div>
+
+        <div class="c-item">
+          <div class="c-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div class="c-item-body">
+            <strong>Viber / WhatsApp</strong>
+            <span><a href="viber://chat?number=%2B381616669378">061 666 9378</a></span>
+          </div>
+        </div>
+
+        <div class="c-item">
+          <div class="c-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="c-item-body">
+            <strong>Lokacija</strong>
+            <span>Srbija · dolazim na teren</span>
+          </div>
+        </div>
+
+        <div class="c-item">
+          <div class="c-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="c-item-body">
+            <strong>Radno Vreme</strong>
+            <span>Pon–Sub · 08:00–18:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-ctas fade-up">
+        <a href="tel:+381616669378" class="btn-fill">Pozovi Odmah</a>
+        <a href="viber://chat?number=%2B381616669378" class="btn-ghost">Piši na Viber</a>
+      </div>
+    </div>
+
+    <div class="contact-visual fade-up">
+      <img src="bastice.jpg" alt="Haus Majstor Nemanja — Baštice u dvorištu" class="contact-img"/>
+      <div class="contact-img-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Besplatna Konsultacija
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="f-col">
+        <div class="f-brand-logo">
+          <span class="f-brand-mark">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="43" x2="45" y2="43"/>
+              <path d="M4 23 L24 6 L44 23"/>
+              <line x1="7" y1="23" x2="41" y2="23"/>
+              <circle cx="24" cy="17" r="1.4"/>
+              <path d="M35 13 L35 8 L38.5 8 L38.5 16"/>
+              <line x1="8" y1="23" x2="8" y2="43"/>
+              <line x1="40" y1="23" x2="40" y2="43"/>
+              <path d="M20 43 L20 31 Q20 28.5 22 28.5 L26 28.5 Q28 28.5 28 31 L28 43"/>
+              <rect x="11.5" y="28" width="6" height="6.5"/>
+              <line x1="14.5" y1="28" x2="14.5" y2="34.5"/>
+              <line x1="11.5" y1="31.25" x2="17.5" y2="31.25"/>
+              <rect x="30.5" y="28" width="6" height="6.5"/>
+              <line x1="33.5" y1="28" x2="33.5" y2="34.5"/>
+              <line x1="30.5" y1="31.25" x2="36.5" y2="31.25"/>
+            </svg>
+          </span>
+          HAUS <em>MAJSTOR</em>
+        </div>
+        <p class="f-desc">Nemanja — izrada natrešnica, letnjikovaca, garaža i uzdignutih baštica po meri. Ručna izrada, čvrsti materijali i realne cene.</p>
+      </div>
+
+      <div class="f-col">
+        <div class="f-col-title">Navigacija</div>
+        <ul class="f-links">
+          <li><a href="#about">O Nama</a></li>
+          <li><a href="#services-preview">Usluge</a></li>
+          <li><a href="#video-showcase">Video</a></li>
+          <li><a href="#gallery">Radovi</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <div class="f-col-title">Usluge</div>
+        <ul class="f-links">
+          <li><a href="usluga-natresnice.html">Natrešnice</a></li>
+          <li><a href="usluga-letnjikovci.html">Letnjikovci</a></li>
+          <li><a href="usluga-garaze.html">Garaže</a></li>
+          <li><a href="usluga-bastice.html">Baštice</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <div class="f-col-title">Kontakt</div>
+        <ul class="f-links">
+          <li><a href="tel:+381616669378">061 666 9378</a></li>
+          <li><a href="viber://chat?number=%2B381616669378">Viber / WhatsApp</a></li>
+          <li>Pon–Sub · 08–18h</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Haus Majstor Nemanja. Sva prava zadržana.</div>
+      <div style="opacity:0.45;letter-spacing:2px;font-size:10px;">SRBIJA</div>
+    </div>
+  </footer>
+</section>
+
+</body>
+</html>

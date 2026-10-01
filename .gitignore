@@ -1,0 +1,4 @@
+node_modules/
+.npm-cache/
+hausmajstor-premium/qa/
+*.log
