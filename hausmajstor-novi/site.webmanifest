@@ -1,0 +1,13 @@
+{
+  "name": "Hausmajstor",
+  "short_name": "Hausmajstor",
+  "lang": "sr-Latn",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#F2F3EF",
+  "theme_color": "#2C4936",
+  "icons": [
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
